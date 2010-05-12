@@ -8,7 +8,7 @@ require 'mechanize'
 
 class ItunesConnect
   def initialize
-    @agent = WWW::Mechanize.new
+    @agent = Mechanize.new
     @agent.follow_meta_refresh = true
   end
   
@@ -29,7 +29,7 @@ class ItunesConnect
 
   def daily_reports(final_date = nil)
     reports = []
-    page = @agent.page.link_with(:text => "Sales/Trend Reports").click
+    page = @agent.page.link_with(:text => "Sales and Trends").click
 
     form = page.form_with(:name => "frmVendorPage")
     form.field_with(:value => "Select Date Type").value="Daily"
